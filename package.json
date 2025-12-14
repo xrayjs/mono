@@ -4,20 +4,18 @@
   "private": true,
   "type": "module",
   "description": "Xray monorepo",
-  "packageManager": "pnpm@9.15.0",
   "engines": {
     "node": ">=25.0.0",
-    "pnpm": ">=9.0.0"
+    "pnpm": ">=10.0.0"
   },
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "build": "pnpm -r build",
     "dev": "pnpm -r --parallel dev",
     "test": "pnpm -r test",
     "lint": "pnpm -r lint",
     "typecheck": "pnpm -r typecheck",
     "clean": "pnpm -r clean && rm -rf node_modules",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md,mdx,css}\""
   },
   "keywords": [],
   "author": "",

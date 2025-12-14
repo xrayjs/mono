@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@mono/schema": "workspace:*",
-    "solid-js": "catalog:solid"
+    "solid-js": "catalog:"
   },
   "devDependencies": {
     "typescript": "catalog:",
