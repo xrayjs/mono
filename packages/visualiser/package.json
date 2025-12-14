@@ -1,0 +1,26 @@
+{
+  "name": "@mono/visualiser",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Visualiser application for Xray",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "preview": "vite preview",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@mono/schema": "workspace:*",
+    "@mono/ui": "workspace:*",
+    "solid-js": "catalog:solid"
+  },
+  "devDependencies": {
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vitest": "catalog:",
+    "vite-plugin-solid": "^2.10.2"
+  }
+}
