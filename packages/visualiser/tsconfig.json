@@ -9,8 +9,5 @@
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"],
-  "references": [
-    { "path": "../schema" },
-    { "path": "../ui" }
-  ]
+  "references": [{ "path": "../schema" }, { "path": "../ui" }]
 }

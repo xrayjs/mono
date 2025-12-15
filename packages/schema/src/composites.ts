@@ -3,9 +3,9 @@
  * Complex token value types built from primitives
  */
 
-import { z } from 'zod';
-import { BORDER_STYLES, LINE_CAPS } from './constants.js';
-import { CurlyBraceReferenceSchema } from './references.js';
+import { z } from "zod";
+import { BORDER_STYLES, LINE_CAPS } from "./constants.js";
+import { CurlyBraceReferenceSchema } from "./references.js";
 import {
   ColorValueSchema,
   DimensionValueSchema,
@@ -13,7 +13,7 @@ import {
   FontWeightValueSchema,
   DurationValueSchema,
   CubicBezierValueSchema,
-} from './primitives.js';
+} from "./primitives.js";
 
 /**
  * Typography composite value
@@ -21,8 +21,12 @@ import {
 export const TypographyValueSchema = z.object({
   fontFamily: z.union([FontFamilyValueSchema, CurlyBraceReferenceSchema]),
   fontSize: z.union([DimensionValueSchema, CurlyBraceReferenceSchema]),
-  fontWeight: z.union([FontWeightValueSchema, CurlyBraceReferenceSchema]).optional(),
-  letterSpacing: z.union([DimensionValueSchema, CurlyBraceReferenceSchema]).optional(),
+  fontWeight: z
+    .union([FontWeightValueSchema, CurlyBraceReferenceSchema])
+    .optional(),
+  letterSpacing: z
+    .union([DimensionValueSchema, CurlyBraceReferenceSchema])
+    .optional(),
   lineHeight: z.union([z.number(), CurlyBraceReferenceSchema]).optional(),
 });
 
@@ -41,7 +45,10 @@ export const ShadowValueSchema = z.object({
 /**
  * Shadow can be single or array of shadows
  */
-export const ShadowOrArraySchema = z.union([ShadowValueSchema, z.array(ShadowValueSchema).min(1)]);
+export const ShadowOrArraySchema = z.union([
+  ShadowValueSchema,
+  z.array(ShadowValueSchema).min(1),
+]);
 
 /**
  * Border composite value
@@ -71,7 +78,9 @@ export const GradientValueSchema = z.array(GradientStopSchema).min(2);
 export const TransitionValueSchema = z.object({
   duration: z.union([DurationValueSchema, CurlyBraceReferenceSchema]),
   delay: z.union([DurationValueSchema, CurlyBraceReferenceSchema]).optional(),
-  timingFunction: z.union([CubicBezierValueSchema, CurlyBraceReferenceSchema]).optional(),
+  timingFunction: z
+    .union([CubicBezierValueSchema, CurlyBraceReferenceSchema])
+    .optional(),
 });
 
 /**
@@ -80,7 +89,9 @@ export const TransitionValueSchema = z.object({
 export const StrokeStyleValueSchema = z.union([
   z.enum(BORDER_STYLES),
   z.object({
-    dashArray: z.array(z.union([DimensionValueSchema, CurlyBraceReferenceSchema])).min(1),
+    dashArray: z
+      .array(z.union([DimensionValueSchema, CurlyBraceReferenceSchema]))
+      .min(1),
     lineCap: z.enum(LINE_CAPS).optional(),
   }),
 ]);

@@ -32,10 +32,10 @@ Integrate validation into build tools (Vite, Webpack, esbuild).
 
 ```ts
 // vite.config.ts
-import { dtcgValidator } from 'dtcg-validator/vite';
+import { dtcgValidator } from "dtcg-validator/vite";
 
 export default {
-  plugins: [dtcgValidator({ tokensDir: './tokens' })],
+  plugins: [dtcgValidator({ tokensDir: "./tokens" })],
 };
 ```
 
@@ -134,8 +134,8 @@ Resolve references across multiple token files.
 
 ```ts
 const resolver = new TokenResolver();
-resolver.addFile('base.tokens.json', baseTokens);
-resolver.addFile('theme.tokens.json', themeTokens);
+resolver.addFile("base.tokens.json", baseTokens);
+resolver.addFile("theme.tokens.json", themeTokens);
 const resolved = resolver.resolveAll();
 ```
 
@@ -154,7 +154,7 @@ Migrate tokens between formats or versions.
 
 ```ts
 const migrator = new TokenMigrator(oldTokens);
-migrator.renameTokens({ 'colors.primary': 'color.brand.primary' });
+migrator.renameTokens({ "colors.primary": "color.brand.primary" });
 migrator.updateReferences();
 migrator.validateResult();
 ```
@@ -187,14 +187,18 @@ Real-time validation in the editor.
 Unit test tokens like code.
 
 ```ts
-describe('Brand Tokens', () => {
-  it('should have all required color tokens', () => {
-    expectTokens(tokens).toHaveToken('colors.primary');
-    expectTokens(tokens).toHaveToken('colors.secondary');
+describe("Brand Tokens", () => {
+  it("should have all required color tokens", () => {
+    expectTokens(tokens).toHaveToken("colors.primary");
+    expectTokens(tokens).toHaveToken("colors.secondary");
   });
 
-  it('should have valid contrast ratios', () => {
-    expectTokens(tokens).toHaveContrastRatio('colors.text', 'colors.background', 4.5);
+  it("should have valid contrast ratios", () => {
+    expectTokens(tokens).toHaveContrastRatio(
+      "colors.text",
+      "colors.background",
+      4.5
+    );
   });
 });
 ```

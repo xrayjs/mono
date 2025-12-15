@@ -3,22 +3,22 @@
  * Token file structure and recursive validation
  */
 
-import { z } from 'zod';
-import { CurlyBraceReferenceSchema } from './references.js';
-import { TokenTypeSchema, AnyTokenValueSchema } from './tokens.js';
+import { z } from "zod";
+import { CurlyBraceReferenceSchema } from "./references.js";
+import { TokenTypeSchema, AnyTokenValueSchema } from "./tokens.js";
 
 /**
  * Known reserved properties
  */
 const KNOWN_RESERVED_PROPERTIES = new Set([
-  '$value',
-  '$type',
-  '$description',
-  '$deprecated',
-  '$extensions',
-  '$extends',
-  '$root',
-  '$schema', // JSON Schema reference (allowed at root level)
+  "$value",
+  "$type",
+  "$description",
+  "$deprecated",
+  "$extensions",
+  "$extends",
+  "$root",
+  "$schema", // JSON Schema reference (allowed at root level)
 ]);
 
 /**
@@ -27,7 +27,7 @@ const KNOWN_RESERVED_PROPERTIES = new Set([
 function validateReservedProperties(obj: Record<string, unknown>): string[] {
   const unknownProps: string[] = [];
   for (const key of Object.keys(obj)) {
-    if (key.startsWith('$') && !KNOWN_RESERVED_PROPERTIES.has(key)) {
+    if (key.startsWith("$") && !KNOWN_RESERVED_PROPERTIES.has(key)) {
       unknownProps.push(key);
     }
   }
@@ -40,8 +40,8 @@ function validateReservedProperties(obj: Record<string, unknown>): string[] {
 function validateTokenNames(obj: Record<string, unknown>): string[] {
   const invalidNames: string[] = [];
   for (const key of Object.keys(obj)) {
-    if (!key.startsWith('$') && key !== '$root') {
-      if (key.includes('{') || key.includes('}') || key.includes('.')) {
+    if (!key.startsWith("$") && key !== "$root") {
+      if (key.includes("{") || key.includes("}") || key.includes(".")) {
         invalidNames.push(key);
       }
     }

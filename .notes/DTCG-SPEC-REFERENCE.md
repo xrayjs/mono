@@ -222,8 +222,14 @@ May be array for multiple shadows: `"$value": [{...}, {...}]`
 {
   "$type": "gradient",
   "$value": [
-    { "color": { "colorSpace": "srgb", "components": [1, 0, 0] }, "position": 0 },
-    { "color": { "colorSpace": "srgb", "components": [0, 0, 1] }, "position": 1 }
+    {
+      "color": { "colorSpace": "srgb", "components": [1, 0, 0] },
+      "position": 0
+    },
+    {
+      "color": { "colorSpace": "srgb", "components": [0, 0, 1] },
+      "position": 1
+    }
   ]
 }
 ```
@@ -432,7 +438,11 @@ Tools MUST preserve unknown extensions.
     "$type": "shadow",
     "elevation-1": {
       "$value": {
-        "color": { "colorSpace": "srgb", "components": [0, 0, 0], "alpha": 0.1 },
+        "color": {
+          "colorSpace": "srgb",
+          "components": [0, 0, 0],
+          "alpha": 0.1
+        },
         "offsetX": { "value": 0, "unit": "px" },
         "offsetY": { "value": 2, "unit": "px" },
         "blur": { "value": 4, "unit": "px" },

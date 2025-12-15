@@ -5,36 +5,46 @@
  * Validate design token files against the W3C DTCG specification
  */
 
-import * as p from '@clack/prompts';
-import chalk from 'chalk';
-import { readFileSync, existsSync, statSync, readdirSync, watch } from 'node:fs';
-import { resolve, relative, extname, join } from 'node:path';
-import { validateTokenJSON, type ValidationResult, type ValidationError } from '../index.js';
+import * as p from "@clack/prompts";
+import chalk from "chalk";
+import {
+  readFileSync,
+  existsSync,
+  statSync,
+  readdirSync,
+  watch,
+} from "node:fs";
+import { resolve, relative, extname, join } from "node:path";
+import {
+  validateTokenJSON,
+  type ValidationResult,
+  type ValidationError,
+} from "../index.js";
 
 // Parse CLI arguments
 const args = process.argv.slice(2);
 const flags = {
-  help: args.includes('--help') || args.includes('-h'),
-  watch: args.includes('--watch') || args.includes('-w'),
-  json: args.includes('--json'),
-  quiet: args.includes('--quiet') || args.includes('-q'),
+  help: args.includes("--help") || args.includes("-h"),
+  watch: args.includes("--watch") || args.includes("-w"),
+  json: args.includes("--json"),
+  quiet: args.includes("--quiet") || args.includes("-q"),
 };
-const paths = args.filter((arg) => !arg.startsWith('-'));
+const paths = args.filter((arg) => !arg.startsWith("-"));
 
 function printHelp(): void {
   console.log(`
-${chalk.bold('dtcg-validate')} - Validate DTCG design token files
+${chalk.bold("dtcg-validate")} - Validate DTCG design token files
 
-${chalk.bold('Usage:')}
+${chalk.bold("Usage:")}
   dtcg-validate <file|directory> [options]
 
-${chalk.bold('Options:')}
+${chalk.bold("Options:")}
   -h, --help     Show this help message
   -w, --watch    Watch files for changes
   -q, --quiet    Only show errors, no success messages
   --json         Output results as JSON
 
-${chalk.bold('Examples:')}
+${chalk.bold("Examples:")}
   dtcg-validate tokens.json
   dtcg-validate ./tokens/
   dtcg-validate tokens.json --watch
@@ -47,18 +57,24 @@ function formatPath(filePath: string): string {
 }
 
 function formatError(error: ValidationError, filePath: string): string {
-  const path = error.path.length > 0 ? chalk.yellow(error.path.join('.')) : chalk.dim('(root)');
+  const path =
+    error.path.length > 0
+      ? chalk.yellow(error.path.join("."))
+      : chalk.dim("(root)");
   const code = chalk.dim(`[${error.code}]`);
   const message = error.message;
 
-  return `  ${chalk.red('✖')} ${path} ${code}\n    ${message}`;
+  return `  ${chalk.red("✖")} ${path} ${code}\n    ${message}`;
 }
 
 function formatWarning(warning: ValidationError): string {
-  const path = warning.path.length > 0 ? chalk.yellow(warning.path.join('.')) : chalk.dim('(root)');
+  const path =
+    warning.path.length > 0
+      ? chalk.yellow(warning.path.join("."))
+      : chalk.dim("(root)");
   const message = warning.message;
 
-  return `  ${chalk.yellow('⚠')} ${path}\n    ${message}`;
+  return `  ${chalk.yellow("⚠")} ${path}\n    ${message}`;
 }
 
 function printResult(filePath: string, result: ValidationResult): void {
@@ -71,7 +87,7 @@ function printResult(filePath: string, result: ValidationResult): void {
       const tokenCount = result.tokens.size;
       const groupCount = result.groups.size;
       console.log(
-        `${chalk.green('✓')} ${formatPath(filePath)} ${chalk.dim(`(${tokenCount} tokens, ${groupCount} groups)`)}`
+        `${chalk.green("✓")} ${formatPath(filePath)} ${chalk.dim(`(${tokenCount} tokens, ${groupCount} groups)`)}`
       );
 
       if (result.warnings.length > 0) {
@@ -82,7 +98,7 @@ function printResult(filePath: string, result: ValidationResult): void {
       }
     }
   } else {
-    console.log(`${chalk.red('✖')} ${formatPath(filePath)}`);
+    console.log(`${chalk.red("✖")} ${formatPath(filePath)}`);
     console.log(chalk.red(`  ${result.errors.length} error(s):`));
     for (const error of result.errors) {
       console.log(formatError(error, filePath));
@@ -100,9 +116,9 @@ function printResult(filePath: string, result: ValidationResult): void {
 function isTokenFile(filePath: string): boolean {
   // Only match files that are explicitly token files
   return (
-    filePath.endsWith('.tokens') ||
-    filePath.endsWith('.tokens.json') ||
-    filePath.endsWith('.tokens5.json')
+    filePath.endsWith(".tokens") ||
+    filePath.endsWith(".tokens.json") ||
+    filePath.endsWith(".tokens5.json")
   );
 }
 
@@ -113,7 +129,11 @@ function findTokenFiles(dirPath: string): string[] {
     const entries = readdirSync(dir, { withFileTypes: true });
     for (const entry of entries) {
       const fullPath = join(dir, entry.name);
-      if (entry.isDirectory() && !entry.name.startsWith('.') && entry.name !== 'node_modules') {
+      if (
+        entry.isDirectory() &&
+        !entry.name.startsWith(".") &&
+        entry.name !== "node_modules"
+      ) {
         walk(fullPath);
       } else if (entry.isFile() && isTokenFile(entry.name)) {
         files.push(fullPath);
@@ -127,12 +147,12 @@ function findTokenFiles(dirPath: string): string[] {
 
 function validateFile(filePath: string): ValidationResult | null {
   try {
-    const content = readFileSync(filePath, 'utf-8');
+    const content = readFileSync(filePath, "utf-8");
     return validateTokenJSON(content);
   } catch (err) {
     const error = err as Error;
-    console.log(`${chalk.red('✖')} ${formatPath(filePath)}`);
-    console.log(`  ${chalk.red('Error reading file:')} ${error.message}`);
+    console.log(`${chalk.red("✖")} ${formatPath(filePath)}`);
+    console.log(`  ${chalk.red("Error reading file:")} ${error.message}`);
     return null;
   }
 }
@@ -201,12 +221,16 @@ function printSummary(summary: ValidationSummary): void {
     if (summary.failed === 0) {
       console.log(
         chalk.green.bold(`✓ All ${summary.total} file(s) valid`) +
-          (summary.warnings > 0 ? chalk.yellow(` (${summary.warnings} warning(s))`) : '')
+          (summary.warnings > 0
+            ? chalk.yellow(` (${summary.warnings} warning(s))`)
+            : "")
       );
     } else {
       console.log(
         chalk.red.bold(`✖ ${summary.failed}/${summary.total} file(s) invalid`) +
-          (summary.warnings > 0 ? chalk.yellow(` (${summary.warnings} warning(s))`) : '')
+          (summary.warnings > 0
+            ? chalk.yellow(` (${summary.warnings} warning(s))`)
+            : "")
       );
     }
   }
@@ -216,13 +240,15 @@ async function watchFiles(filePaths: string[]): Promise<void> {
   const directories = new Set<string>();
 
   for (const filePath of filePaths) {
-    const dir = resolve(filePath, '..');
+    const dir = resolve(filePath, "..");
     directories.add(dir);
   }
 
-  p.intro(chalk.bgCyan.black(' DTCG Validator '));
-  console.log(chalk.dim(`Watching ${filePaths.length} file(s) for changes...\n`));
-  console.log(chalk.dim('Press Ctrl+C to stop\n'));
+  p.intro(chalk.bgCyan.black(" DTCG Validator "));
+  console.log(
+    chalk.dim(`Watching ${filePaths.length} file(s) for changes...\n`)
+  );
+  console.log(chalk.dim("Press Ctrl+C to stop\n"));
 
   // Initial validation
   validateFiles(filePaths);
@@ -233,7 +259,9 @@ async function watchFiles(filePaths: string[]): Promise<void> {
       if (filename && isTokenFile(filename)) {
         const fullPath = join(dir, filename);
         if (existsSync(fullPath)) {
-          console.log(chalk.dim(`\n--- ${new Date().toLocaleTimeString()} ---\n`));
+          console.log(
+            chalk.dim(`\n--- ${new Date().toLocaleTimeString()} ---\n`)
+          );
           const result = validateFile(fullPath);
           if (result) {
             printResult(fullPath, result);
@@ -255,20 +283,20 @@ async function main(): Promise<void> {
 
   if (paths.length === 0) {
     // Interactive mode
-    p.intro(chalk.bgCyan.black(' DTCG Validator '));
+    p.intro(chalk.bgCyan.black(" DTCG Validator "));
 
     const input = await p.text({
-      message: 'Enter file or directory path to validate:',
-      placeholder: './tokens.json',
+      message: "Enter file or directory path to validate:",
+      placeholder: "./tokens.json",
       validate: (value) => {
-        if (!value) return 'Please enter a path';
-        if (!existsSync(value)) return 'Path does not exist';
+        if (!value) return "Please enter a path";
+        if (!existsSync(value)) return "Path does not exist";
         return undefined;
       },
     });
 
     if (p.isCancel(input)) {
-      p.cancel('Cancelled');
+      p.cancel("Cancelled");
       process.exit(0);
     }
 
@@ -291,7 +319,9 @@ async function main(): Promise<void> {
     if (stat.isDirectory()) {
       const files = findTokenFiles(resolvedPath);
       if (files.length === 0) {
-        console.log(chalk.yellow(`Warning: No token files found in ${inputPath}`));
+        console.log(
+          chalk.yellow(`Warning: No token files found in ${inputPath}`)
+        );
       }
       filesToValidate.push(...files);
     } else if (stat.isFile()) {
@@ -300,7 +330,7 @@ async function main(): Promise<void> {
   }
 
   if (filesToValidate.length === 0) {
-    console.log(chalk.red('Error: No token files to validate'));
+    console.log(chalk.red("Error: No token files to validate"));
     process.exit(1);
   }
 
@@ -308,7 +338,7 @@ async function main(): Promise<void> {
     await watchFiles(filesToValidate);
   } else {
     if (!flags.json && !flags.quiet) {
-      p.intro(chalk.bgCyan.black(' DTCG Validator '));
+      p.intro(chalk.bgCyan.black(" DTCG Validator "));
     }
 
     const summary = validateFiles(filesToValidate);
@@ -319,6 +349,6 @@ async function main(): Promise<void> {
 }
 
 main().catch((err) => {
-  console.error(chalk.red('Fatal error:'), err);
+  console.error(chalk.red("Fatal error:"), err);
   process.exit(1);
 });

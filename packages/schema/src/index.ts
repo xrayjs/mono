@@ -19,7 +19,7 @@ export {
   type BorderStyle,
   type LineCap,
   type TokenType,
-} from './constants.js';
+} from "./constants.js";
 
 // References
 export {
@@ -27,7 +27,7 @@ export {
   CurlyBraceReferenceSchema,
   JsonPointerReferenceSchema,
   ReferenceSchema,
-} from './references.js';
+} from "./references.js";
 
 // Primitives
 export {
@@ -45,7 +45,7 @@ export {
   type FontWeightValue,
   type DurationValue,
   type CubicBezierValue,
-} from './primitives.js';
+} from "./primitives.js";
 
 // Composites
 export {
@@ -64,7 +64,7 @@ export {
   type GradientValue,
   type TransitionValue,
   type StrokeStyleValue,
-} from './composites.js';
+} from "./composites.js";
 
 // Tokens
 export {
@@ -91,7 +91,11 @@ export {
   GroupPropertiesSchema,
   RootTokenSchema,
   type Token,
-} from './tokens.js';
+} from "./tokens.js";
 
 // File
-export { TokenFileNodeSchema, TokenFileSchema, type TokenFile } from './file.js';
+export {
+  TokenFileNodeSchema,
+  TokenFileSchema,
+  type TokenFile,
+} from "./file.js";

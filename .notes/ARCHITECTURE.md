@@ -129,13 +129,13 @@ interface GroupNode {
 
 ```typescript
 interface CurlyBraceReference {
-  type: 'curly';
+  type: "curly";
   path: string[];
   raw: string;
 }
 
 interface JsonPointerReference {
-  type: 'pointer';
+  type: "pointer";
   pointer: string;
   raw: string;
 }
@@ -314,7 +314,7 @@ interface PlatformConfig {
   // Platform-specific
   prefix?: string;
   suffix?: string;
-  naming?: 'camelCase' | 'kebab-case' | 'snake_case' | 'PascalCase';
+  naming?: "camelCase" | "kebab-case" | "snake_case" | "PascalCase";
 }
 ```
 
@@ -327,25 +327,25 @@ interface PlatformConfig {
 ```typescript
 enum ErrorCode {
   // Syntax
-  INVALID_JSON = 'E001',
-  INVALID_TOKEN_NAME = 'E002',
+  INVALID_JSON = "E001",
+  INVALID_TOKEN_NAME = "E002",
 
   // Structure
-  MISSING_VALUE = 'E010',
-  UNKNOWN_RESERVED_PROPERTY = 'E011',
+  MISSING_VALUE = "E010",
+  UNKNOWN_RESERVED_PROPERTY = "E011",
 
   // Types
-  INVALID_TYPE = 'E020',
-  TYPE_MISMATCH = 'E021',
+  INVALID_TYPE = "E020",
+  TYPE_MISMATCH = "E021",
 
   // References
-  UNRESOLVED_REFERENCE = 'E030',
-  CIRCULAR_REFERENCE = 'E031',
-  REFERENCE_TO_GROUP = 'E032',
+  UNRESOLVED_REFERENCE = "E030",
+  CIRCULAR_REFERENCE = "E031",
+  REFERENCE_TO_GROUP = "E032",
 
   // Validation
-  INVALID_COLOR_SPACE = 'E040',
-  INVALID_DIMENSION_UNIT = 'E041',
+  INVALID_COLOR_SPACE = "E040",
+  INVALID_DIMENSION_UNIT = "E041",
 }
 ```
 
@@ -360,7 +360,7 @@ interface TokenError {
     line: number;
     column: number;
   };
-  severity: 'error' | 'warning';
+  severity: "error" | "warning";
 }
 ```
 

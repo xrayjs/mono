@@ -3,18 +3,18 @@
  * Basic token value types
  */
 
-import { z } from 'zod';
+import { z } from "zod";
 import {
   COLOR_SPACES,
   DIMENSION_UNITS,
   DURATION_UNITS,
   FONT_WEIGHT_KEYWORDS,
-} from './constants.js';
+} from "./constants.js";
 
 /**
  * Color component - number or "none" keyword
  */
-export const ColorComponentSchema = z.union([z.number(), z.literal('none')]);
+export const ColorComponentSchema = z.union([z.number(), z.literal("none")]);
 
 /**
  * Color value with color space and components
@@ -68,7 +68,7 @@ export const DurationValueSchema = z.object({
 export const CubicBezierValueSchema = z
   .tuple([z.number(), z.number(), z.number(), z.number()])
   .refine(([p1x, , p2x]) => p1x >= 0 && p1x <= 1 && p2x >= 0 && p2x <= 1, {
-    message: 'P1x and P2x values must be between 0 and 1',
+    message: "P1x and P2x values must be between 0 and 1",
   });
 
 /**

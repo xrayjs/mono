@@ -4,72 +4,72 @@
  */
 
 export const COLOR_SPACES = [
-  'srgb',
-  'display-p3',
-  'oklch',
-  'oklab',
-  'hsl',
-  'hwb',
-  'lab',
-  'lch',
-  'xyz',
-  'xyz-d50',
-  'xyz-d65',
+  "srgb",
+  "display-p3",
+  "oklch",
+  "oklab",
+  "hsl",
+  "hwb",
+  "lab",
+  "lch",
+  "xyz",
+  "xyz-d50",
+  "xyz-d65",
 ] as const;
 
-export const DIMENSION_UNITS = ['px', 'rem'] as const;
+export const DIMENSION_UNITS = ["px", "rem"] as const;
 
-export const DURATION_UNITS = ['ms', 's'] as const;
+export const DURATION_UNITS = ["ms", "s"] as const;
 
 export const FONT_WEIGHT_KEYWORDS = [
-  'thin',
-  'hairline',
-  'extra-light',
-  'ultra-light',
-  'light',
-  'normal',
-  'regular',
-  'book',
-  'medium',
-  'semi-bold',
-  'demi-bold',
-  'bold',
-  'extra-bold',
-  'ultra-bold',
-  'black',
-  'heavy',
-  'extra-black',
-  'ultra-black',
+  "thin",
+  "hairline",
+  "extra-light",
+  "ultra-light",
+  "light",
+  "normal",
+  "regular",
+  "book",
+  "medium",
+  "semi-bold",
+  "demi-bold",
+  "bold",
+  "extra-bold",
+  "ultra-bold",
+  "black",
+  "heavy",
+  "extra-black",
+  "ultra-black",
 ] as const;
 
 export const BORDER_STYLES = [
-  'solid',
-  'dashed',
-  'dotted',
-  'double',
-  'groove',
-  'ridge',
-  'outset',
-  'inset',
-  'none',
+  "solid",
+  "dashed",
+  "dotted",
+  "double",
+  "groove",
+  "ridge",
+  "outset",
+  "inset",
+  "none",
 ] as const;
 
-export const LINE_CAPS = ['round', 'butt', 'square'] as const;
+export const LINE_CAPS = ["round", "butt", "square"] as const;
 
 export const TOKEN_TYPES = [
-  'color',
-  'dimension',
-  'fontFamily',
-  'fontWeight',
-  'duration',
-  'cubicBezier',
-  'number',
-  'typography',
-  'shadow',
-  'border',
-  'gradient',
-  'transition',
-  'strokeStyle',
+  "color",
+  "dimension",
+  "fontFamily",
+  "fontWeight",
+  "duration",
+  "cubicBezier",
+  "number",
+  "typography",
+  "shadow",
+  "border",
+  "gradient",
+  "transition",
+  "strokeStyle",
 ] as const;
 
 // Type exports
