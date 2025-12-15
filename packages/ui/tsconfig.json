@@ -19,7 +19,7 @@
       "#.storybook/*": ["./.storybook/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.css"],
   "exclude": [
     "node_modules",
     "dist",
