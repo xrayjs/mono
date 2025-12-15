@@ -67,12 +67,12 @@ function canDisplayGamut(
 }
 
 /**
- * Get the fallback color (gamut-mapped to sRGB)
+ * Get the fallback color as sRGB Color object (gamut-mapped)
  */
-function getFallbackColor(color: Color): string {
+function getFallbackSrgb(color: Color): Color {
   const srgb = color.to("srgb");
   srgb.toGamut({ space: "srgb" });
-  return srgb.display();
+  return srgb;
 }
 
 /** Display a color swatch with value and gamut information */
@@ -116,10 +116,22 @@ export const ColorSwatch = (_props: ColorSwatchProps) => {
     return color.display();
   });
 
-  const fallbackColor = createMemo(() => {
+  const fallbackSrgb = createMemo(() => {
     const color = parsedColor();
-    if (!color) return "transparent";
-    return getFallbackColor(color);
+    if (!color) return null;
+    return getFallbackSrgb(color);
+  });
+
+  const fallbackCss = createMemo(() => {
+    const srgb = fallbackSrgb();
+    if (!srgb) return "transparent";
+    return srgb.display();
+  });
+
+  const fallbackString = createMemo(() => {
+    const srgb = fallbackSrgb();
+    if (!srgb) return "";
+    return srgb.toString();
   });
 
   const gamut = createMemo((): ColorGamut | "Invalid" => {
@@ -216,7 +228,7 @@ export const ColorSwatch = (_props: ColorSwatchProps) => {
             <div class="color-swatch__split-right">
               <div
                 class="color-swatch__color"
-                style={{ "background-color": fallbackColor() }}
+                style={{ "background-color": fallbackCss() }}
               />
               <div class="color-swatch__fallback-label">
                 <span>sRGB</span>
@@ -239,7 +251,7 @@ export const ColorSwatch = (_props: ColorSwatchProps) => {
         <Show when={showSplitView()}>
           <div class="color-swatch__fallback-info">
             <span class="color-swatch__fallback-tag">fallback</span>
-            <span class="color-swatch__fallback-value">{fallbackColor()}</span>
+            <span class="color-swatch__fallback-value">{fallbackString()}</span>
           </div>
         </Show>
         <span
