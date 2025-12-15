@@ -1,13 +1,16 @@
 {
-  "name": "@xray/cli",
+  "name": "@xray/validator",
   "version": "0.0.1",
   "private": true,
   "type": "module",
-  "description": "CLI tool for Xray",
+  "description": "Validation utilities for Xray",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "bin": {
-    "xray": "./dist/index.js"
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
   },
   "scripts": {
     "build": "tsc",
@@ -16,15 +19,13 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest"
   },
-  "dependencies": {
-    "@clack/prompts": "^0.11.0",
-    "@xray/schema": "workspace:*",
-    "@xray/validator": "workspace:*",
-    "chalk": "^5.6.2"
-  },
   "devDependencies": {
     "@types/node": "catalog:",
     "typescript": "catalog:",
     "vitest": "catalog:"
+  },
+  "dependencies": {
+    "@xray/schema": "workspace:*",
+    "zod": "^4.2.0"
   }
 }

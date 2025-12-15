@@ -3,9 +3,13 @@
   "compilerOptions": {
     "composite": true,
     "outDir": "./dist",
-    "rootDir": "./"
+    "rootDir": "./src"
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"],
-  "references": [{ "path": "../schema" }]
+  "references": [
+    {
+      "path": "../schema"
+    }
+  ]
 }

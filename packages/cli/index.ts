@@ -19,7 +19,7 @@ import {
   validateTokenJSON,
   type ValidationResult,
   type ValidationError,
-} from "../index.js";
+} from "@xray/validator";
 
 // Parse CLI arguments
 const args = process.argv.slice(2);
