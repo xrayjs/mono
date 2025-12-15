@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import {
   mergeProps,
   splitProps,
@@ -237,6 +236,12 @@ export const ColorSwatch = (_props: ColorSwatchProps) => {
         <span class="color-swatch__value" title={props.color}>
           {props.color}
         </span>
+        <Show when={showSplitView()}>
+          <div class="color-swatch__fallback-info">
+            <span class="color-swatch__fallback-tag">fallback</span>
+            <span class="color-swatch__fallback-value">{fallbackColor()}</span>
+          </div>
+        </Show>
         <span
           class="color-swatch__gamut"
           classList={{
