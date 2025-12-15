@@ -6,12 +6,33 @@ settings:
 
 catalogs:
   default:
+    '@types/node':
+      specifier: 25.0.2
+      version: 25.0.2
+    '@vitest/ui':
+      specifier: ^4.0.15
+      version: 4.0.15
+    eslint:
+      specifier: ^9.17.0
+      version: 9.39.2
+    prettier:
+      specifier: ^3.7.4
+      version: 3.7.4
     solid-js:
       specifier: 1.9.10
       version: 1.9.10
+    typescript:
+      specifier: ^5.7.2
+      version: 5.9.3
+    vite:
+      specifier: ^7.3.0
+      version: 7.3.0
     vitest:
       specifier: 4.0.15
       version: 4.0.15
+    zod:
+      specifier: ^4.2.0
+      version: 4.2.0
 
 importers:
 
@@ -31,7 +52,7 @@ importers:
         version: 7.3.0(@types/node@25.0.2)(jiti@2.6.1)(tsx@4.21.0)
       vitest:
         specifier: 'catalog:'
-        version: 4.0.15(@types/node@25.0.2)(@vitest/ui@4.0.15)(jiti@2.6.1)(tsx@4.21.0)
+        version: 4.0.15(@types/node@25.0.2)(@vitest/browser-playwright@4.0.15)(@vitest/ui@4.0.15)(jiti@2.6.1)(tsx@4.21.0)
 
   packages/cli:
     dependencies:
@@ -51,15 +72,9 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 25.0.2
-      '@vitest/ui':
-        specifier: 'catalog:'
-        version: 4.0.15(vitest@4.0.15)
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
-      vitest:
-        specifier: 'catalog:'
-        version: 4.0.15(@types/node@25.0.2)(@vitest/ui@4.0.15)(jiti@2.6.1)(tsx@4.21.0)
 
   packages/figma-plugin:
     dependencies:
@@ -70,18 +85,12 @@ importers:
         specifier: workspace:*
         version: link:../schema
     devDependencies:
-      '@vitest/ui':
-        specifier: 'catalog:'
-        version: 4.0.15(vitest@4.0.15)
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
       vite:
         specifier: 'catalog:'
         version: 7.3.0(@types/node@25.0.2)(jiti@2.6.1)(tsx@4.21.0)
-      vitest:
-        specifier: 'catalog:'
-        version: 4.0.15(@types/node@25.0.2)(@vitest/ui@4.0.15)(jiti@2.6.1)(tsx@4.21.0)
 
   packages/schema:
     dependencies:
@@ -103,7 +112,7 @@ importers:
         version: 5.9.3
       vitest:
         specifier: 'catalog:'
-        version: 4.0.15(@types/node@25.0.2)(@vitest/ui@4.0.15)(jiti@2.6.1)(tsx@4.21.0)
+        version: 4.0.15(@types/node@25.0.2)(@vitest/browser-playwright@4.0.15)(@vitest/ui@4.0.15)(jiti@2.6.1)(tsx@4.21.0)
 
   packages/ui:
     dependencies:
@@ -113,24 +122,6 @@ importers:
       solid-js:
         specifier: 'catalog:'
         version: 1.9.10
-    devDependencies:
-      '@vitest/ui':
-        specifier: 'catalog:'
-        version: 4.0.15(vitest@4.0.15)
-      typescript:
-        specifier: 'catalog:'
-        version: 5.9.3
-      vite:
-        specifier: 'catalog:'
-        version: 7.3.0(@types/node@25.0.2)(jiti@2.6.1)(tsx@4.21.0)
-      vite-plugin-solid:
-        specifier: ^2.10.2
-        version: 2.11.10(solid-js@1.9.10)(vite@7.3.0(@types/node@25.0.2)(jiti@2.6.1)(tsx@4.21.0))
-      vitest:
-        specifier: 'catalog:'
-        version: 4.0.15(@types/node@25.0.2)(@vitest/ui@4.0.15)(jiti@2.6.1)(tsx@4.21.0)
-
-  packages/ui/storybook:
     devDependencies:
       '@chromatic-com/storybook':
         specifier: ^4.1.3
@@ -165,18 +156,21 @@ importers:
       playwright:
         specifier: ^1.57.0
         version: 1.57.0
-      solid-js:
-        specifier: 'catalog:'
-        version: 1.9.10
       storybook:
         specifier: ^10.1.9
         version: 10.1.9(@testing-library/dom@10.4.1)(prettier@3.7.4)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       storybook-solidjs-vite:
         specifier: ^10.0.9
         version: 10.0.9(@testing-library/jest-dom@6.9.1)(esbuild@0.27.1)(rollup@4.53.4)(solid-js@1.9.10)(storybook@10.1.9(@testing-library/dom@10.4.1)(prettier@3.7.4)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(typescript@5.9.3)(vite@7.3.0(@types/node@25.0.2)(jiti@2.6.1)(tsx@4.21.0))
-      vitest:
+      typescript:
         specifier: 'catalog:'
-        version: 4.0.15(@types/node@25.0.2)(@vitest/browser-playwright@4.0.15)(@vitest/ui@4.0.15)(jiti@2.6.1)(tsx@4.21.0)
+        version: 5.9.3
+      vite:
+        specifier: 'catalog:'
+        version: 7.3.0(@types/node@25.0.2)(jiti@2.6.1)(tsx@4.21.0)
+      vite-plugin-solid:
+        specifier: ^2.10.2
+        version: 2.11.10(@testing-library/jest-dom@6.9.1)(solid-js@1.9.10)(vite@7.3.0(@types/node@25.0.2)(jiti@2.6.1)(tsx@4.21.0))
 
   packages/validator:
     dependencies:
@@ -198,7 +192,7 @@ importers:
         version: 5.9.3
       vitest:
         specifier: 'catalog:'
-        version: 4.0.15(@types/node@25.0.2)(@vitest/ui@4.0.15)(jiti@2.6.1)(tsx@4.21.0)
+        version: 4.0.15(@types/node@25.0.2)(@vitest/browser-playwright@4.0.15)(@vitest/ui@4.0.15)(jiti@2.6.1)(tsx@4.21.0)
 
   packages/visualiser:
     dependencies:
@@ -224,9 +218,6 @@ importers:
       '@unocss/vite':
         specifier: ^66.5.0
         version: 66.5.10(vite@7.3.0(@types/node@25.0.2)(jiti@2.6.1)(tsx@4.21.0))
-      '@vitest/ui':
-        specifier: 'catalog:'
-        version: 4.0.15(vitest@4.0.15)
       solid-devtools:
         specifier: ^0.34.3
         version: 0.34.4(solid-js@1.9.10)(vite@7.3.0(@types/node@25.0.2)(jiti@2.6.1)(tsx@4.21.0))
@@ -238,10 +229,7 @@ importers:
         version: 7.3.0(@types/node@25.0.2)(jiti@2.6.1)(tsx@4.21.0)
       vite-plugin-solid:
         specifier: ^2.11.8
-        version: 2.11.10(solid-js@1.9.10)(vite@7.3.0(@types/node@25.0.2)(jiti@2.6.1)(tsx@4.21.0))
-      vitest:
-        specifier: 'catalog:'
-        version: 4.0.15(@types/node@25.0.2)(@vitest/ui@4.0.15)(jiti@2.6.1)(tsx@4.21.0)
+        version: 2.11.10(@testing-library/jest-dom@6.9.1)(solid-js@1.9.10)(vite@7.3.0(@types/node@25.0.2)(jiti@2.6.1)(tsx@4.21.0))
 
 packages:
 
@@ -4340,19 +4328,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  vite-plugin-solid@2.11.10(solid-js@1.9.10)(vite@7.3.0(@types/node@25.0.2)(jiti@2.6.1)(tsx@4.21.0)):
-    dependencies:
-      '@babel/core': 7.28.5
-      '@types/babel__core': 7.20.5
-      babel-preset-solid: 1.9.10(@babel/core@7.28.5)(solid-js@1.9.10)
-      merge-anything: 5.1.7
-      solid-js: 1.9.10
-      solid-refresh: 0.6.3(solid-js@1.9.10)
-      vite: 7.3.0(@types/node@25.0.2)(jiti@2.6.1)(tsx@4.21.0)
-      vitefu: 1.1.1(vite@7.3.0(@types/node@25.0.2)(jiti@2.6.1)(tsx@4.21.0))
-    transitivePeerDependencies:
-      - supports-color
-
   vite@7.3.0(@types/node@25.0.2)(jiti@2.6.1)(tsx@4.21.0):
     dependencies:
       esbuild: 0.27.1
@@ -4396,44 +4371,6 @@ snapshots:
     optionalDependencies:
       '@types/node': 25.0.2
       '@vitest/browser-playwright': 4.0.15(playwright@1.57.0)(vite@7.3.0(@types/node@25.0.2)(jiti@2.6.1)(tsx@4.21.0))(vitest@4.0.15)
-      '@vitest/ui': 4.0.15(vitest@4.0.15)
-    transitivePeerDependencies:
-      - jiti
-      - less
-      - lightningcss
-      - msw
-      - sass
-      - sass-embedded
-      - stylus
-      - sugarss
-      - terser
-      - tsx
-      - yaml
-
-  vitest@4.0.15(@types/node@25.0.2)(@vitest/ui@4.0.15)(jiti@2.6.1)(tsx@4.21.0):
-    dependencies:
-      '@vitest/expect': 4.0.15
-      '@vitest/mocker': 4.0.15(vite@7.3.0(@types/node@25.0.2)(jiti@2.6.1)(tsx@4.21.0))
-      '@vitest/pretty-format': 4.0.15
-      '@vitest/runner': 4.0.15
-      '@vitest/snapshot': 4.0.15
-      '@vitest/spy': 4.0.15
-      '@vitest/utils': 4.0.15
-      es-module-lexer: 1.7.0
-      expect-type: 1.3.0
-      magic-string: 0.30.21
-      obug: 2.1.1
-      pathe: 2.0.3
-      picomatch: 4.0.3
-      std-env: 3.10.0
-      tinybench: 2.9.0
-      tinyexec: 1.0.2
-      tinyglobby: 0.2.15
-      tinyrainbow: 3.0.3
-      vite: 7.3.0(@types/node@25.0.2)(jiti@2.6.1)(tsx@4.21.0)
-      why-is-node-running: 2.3.0
-    optionalDependencies:
-      '@types/node': 25.0.2
       '@vitest/ui': 4.0.15(vitest@4.0.15)
     transitivePeerDependencies:
       - jiti

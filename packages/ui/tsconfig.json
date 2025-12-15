@@ -5,9 +5,20 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "jsx": "preserve",
-    "jsxImportSource": "solid-js"
+    "jsxImportSource": "solid-js",
+    "types": ["vite/client"],
+    "paths": {
+      "#.storybook/*": ["./.storybook/*"]
+    }
   },
-  "include": ["src/**/*"],
+  "include": [
+    "src/**/*",
+    ".storybook/**/*.ts",
+    ".storybook/**/*.tsx",
+    "stories/**/*.ts",
+    "stories/**/*.tsx",
+    "stories/types/*.d.ts"
+  ],
   "exclude": ["node_modules", "dist"],
   "references": [{ "path": "../schema" }]
 }
