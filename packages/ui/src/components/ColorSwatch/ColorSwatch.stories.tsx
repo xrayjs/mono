@@ -21,7 +21,7 @@ export const Default = meta.story({
   },
 });
 
-// sRGB gamut colors
+// sRGB gamut colors (will always display normally)
 export const SRGBColor = meta.story({
   args: {
     color: "rgb(100, 149, 237)",
@@ -40,24 +40,84 @@ export const HSLColor = meta.story({
   },
 });
 
-// P3 gamut color (outside sRGB)
+// P3 gamut colors (will show split view on sRGB displays)
 export const P3Color = meta.story({
   args: {
     color: "color(display-p3 1 0.2 0.1)",
   },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "A Display P3 color. On sRGB displays, shows split view with sRGB fallback.",
+      },
+    },
+  },
 });
 
-// Rec2020 gamut color (outside P3)
+export const P3VibrantGreen = meta.story({
+  args: {
+    color: "color(display-p3 0.2 1 0.2)",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "A vibrant P3 green that exceeds sRGB gamut.",
+      },
+    },
+  },
+});
+
+export const P3VibrantCyan = meta.story({
+  args: {
+    color: "color(display-p3 0 0.9 0.9)",
+  },
+});
+
+// Rec2020 gamut colors (will show split view on sRGB and P3 displays)
 export const Rec2020Color = meta.story({
   args: {
     color: "color(rec2020 0.9 0.1 0.1)",
   },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "A Rec2020 color. Shows split view on most displays since Rec2020 is rarely supported.",
+      },
+    },
+  },
+});
+
+export const Rec2020Green = meta.story({
+  args: {
+    color: "color(rec2020 0.3 0.9 0.1)",
+  },
 });
 
 // OKLCH with high chroma (likely P3 or wider)
-export const OKLCHVibrant = meta.story({
+export const OKLCHVibrantRed = meta.story({
   args: {
     color: "oklch(65% 0.3 29)",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "High-chroma OKLCH red that likely exceeds sRGB gamut.",
+      },
+    },
+  },
+});
+
+export const OKLCHVibrantBlue = meta.story({
+  args: {
+    color: "oklch(50% 0.35 264)",
+  },
+});
+
+export const OKLCHVibrantMagenta = meta.story({
+  args: {
+    color: "oklch(60% 0.32 328)",
   },
 });
 
@@ -74,6 +134,20 @@ export const HexWithAlpha = meta.story({
   },
 });
 
+export const P3WithAlpha = meta.story({
+  args: {
+    color: "color(display-p3 1 0.3 0.1 / 0.7)",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "P3 color with alpha. Split view also works with transparent colors.",
+      },
+    },
+  },
+});
+
 // Different sizes
 export const SmallSize = meta.story({
   args: {
@@ -86,6 +160,20 @@ export const LargeSize = meta.story({
   args: {
     color: "oklch(80% 0.1 90)",
     size: 120,
+  },
+});
+
+export const LargeP3Color = meta.story({
+  args: {
+    color: "color(display-p3 1 0.5 0)",
+    size: 140,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Larger size makes the split view and labels more readable.",
+      },
+    },
   },
 });
 
@@ -114,5 +202,19 @@ export const LabColor = meta.story({
 export const LCHColor = meta.story({
   args: {
     color: "lch(60% 80 40)",
+  },
+});
+
+// Wide gamut (outside even Rec2020)
+export const WideGamut = meta.story({
+  args: {
+    color: "oklch(70% 0.5 150)",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Extremely high chroma color that exceeds even Rec2020 gamut.",
+      },
+    },
   },
 });
