@@ -7,7 +7,6 @@ export default defineMain({
   },
   typescript: {
     check: false,
-    reactDocgen: false,
   },
   addons: [
     "@storybook/addon-onboarding",

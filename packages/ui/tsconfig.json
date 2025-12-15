@@ -3,7 +3,7 @@
   "compilerOptions": {
     "composite": true,
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": ".",
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
     "types": ["vite/client"],
@@ -16,15 +16,10 @@
       "#shared/*": ["../../shared/*"],
       "assets/*": ["./src/assets/*"],
       "public/*": ["../../public/*"],
-      "#.storybook/*": ["./.storybook/*"]
+      "#storybook/*": ["./.storybook/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.css"],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "src/**/*.stories.tsx",
-    "src/**/*.stories.ts"
-  ],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.css", ".storybook/**/*"],
+  "exclude": ["node_modules", "dist"],
   "references": [{ "path": "../schema" }]
 }

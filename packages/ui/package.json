@@ -18,7 +18,8 @@
       "./*.ts",
       "./*.tsx"
     ],
-    "#shared/*": "../../shared/*"
+    "#shared/*": "../../shared/*",
+    "#storybook/*": "./.storybook/*"
   },
   "scripts": {
     "build": "vite build",
