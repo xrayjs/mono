@@ -17,6 +17,7 @@
     "@kobalte/core": "^0.13.7",
     "@xray/schema": "workspace:*",
     "@xray/ui": "workspace:*",
+    "shiki": "^3.0.0",
     "solid-js": "catalog:"
   },
   "devDependencies": {

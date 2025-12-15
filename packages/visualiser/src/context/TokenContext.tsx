@@ -18,6 +18,8 @@ import {
 interface TokenContextValue {
   /** Current file name */
   fileName: Accessor<string>;
+  /** Raw JSON content as string */
+  rawContent: Accessor<string>;
   /** All color tokens (flattened) */
   colorTokens: Accessor<ColorToken[]>;
   /** Color tokens organized in groups */
@@ -41,6 +43,7 @@ export const TokenProvider: ParentComponent = (props) => {
     colorTokens: [],
     errors: [],
   });
+  const [rawContent, setRawContent] = createSignal<string>("");
 
   // Load example tokens on mount
   onMount(() => {
@@ -50,11 +53,20 @@ export const TokenProvider: ParentComponent = (props) => {
   const resetToExample = () => {
     const result = parseTokenObject(exampleTokens, "Example Tokens");
     setParseResult(result);
+    // Format the example tokens as pretty JSON
+    setRawContent(JSON.stringify(exampleTokens, null, 2));
   };
 
   const loadJson = (content: string, fileName: string) => {
     const result = parseTokenFile(content, fileName);
     setParseResult(result);
+    // Try to pretty-print the JSON, fallback to raw if invalid
+    try {
+      const parsed = JSON.parse(content);
+      setRawContent(JSON.stringify(parsed, null, 2));
+    } catch {
+      setRawContent(content);
+    }
   };
 
   const loadFile = async (file: File): Promise<void> => {
@@ -64,6 +76,7 @@ export const TokenProvider: ParentComponent = (props) => {
 
   const value: TokenContextValue = {
     fileName: () => parseResult().fileName,
+    rawContent,
     colorTokens: () => parseResult().colorTokens,
     colorGroups: () => parseResult().colorGroups,
     errors: () => parseResult().errors,
