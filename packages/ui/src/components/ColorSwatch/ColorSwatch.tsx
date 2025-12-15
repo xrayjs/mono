@@ -129,6 +129,8 @@ export const ColorSwatch = (_props: ColorSwatchProps) => {
     return getGamut(color);
   });
 
+  const isValid = createMemo(() => parsedColor() !== null);
+
   const canDisplay = createMemo(() => {
     const g = gamut();
     if (g === "Invalid") return true;
@@ -172,8 +174,6 @@ export const ColorSwatch = (_props: ColorSwatchProps) => {
     if (!color) return true;
     return isLightColor(color);
   });
-
-  const isValid = createMemo(() => parsedColor() !== null);
 
   return (
     <div class="color-swatch" style={{ width: `${props.size}px` }} {...rest}>
