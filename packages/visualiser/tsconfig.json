@@ -5,20 +5,17 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "jsx": "preserve",
-    "jsxImportSource": "solid-js"
+    "jsxImportSource": "solid-js",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "strict": true,
+    "types": ["vite/client"]
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"],
-  "references": [{ "path": "../schema" }, { "path": "../ui" }],
-
-  "allowSyntheticDefaultImports": true,
-  "esModuleInterop": true,
-  "isolatedModules": true,
-  "module": "ESNext",
-  "moduleResolution": "bundler",
-  "noEmit": true,
-
-  // Type Checking & Safety
-  "strict": true,
-  "types": ["vite/client"]
+  "references": [{ "path": "../schema" }, { "path": "../ui" }]
 }
