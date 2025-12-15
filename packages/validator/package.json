@@ -28,6 +28,6 @@
   },
   "dependencies": {
     "@xray/schema": "workspace:*",
-    "zod": "^4.2.0"
+    "zod": "catalog:"
   }
 }
