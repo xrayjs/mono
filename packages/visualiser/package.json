@@ -6,6 +6,7 @@
   "description": "Visualiser application for Xray",
   "scripts": {
     "build": "vite build",
+    "start": "vite",
     "dev": "vite",
     "preview": "vite preview",
     "clean": "rm -rf dist",
@@ -21,6 +22,9 @@
     "typescript": "catalog:",
     "vite": "catalog:",
     "vitest": "catalog:",
-    "vite-plugin-solid": "^2.10.2"
+    "@unocss/vite": "^66.5.0",
+    "@unocss/preset-wind4": "^66.5.10",
+    "solid-devtools": "^0.34.3",
+    "vite-plugin-solid": "^2.11.8"
   }
 }
