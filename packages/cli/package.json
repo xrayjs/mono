@@ -9,6 +9,9 @@
   "bin": {
     "xray": "./dist/index.js"
   },
+  "imports": {
+    "#shared/*": "../../shared/*"
+  },
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf dist",

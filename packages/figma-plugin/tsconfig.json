@@ -4,7 +4,17 @@
     "composite": true,
     "outDir": "./dist",
     "rootDir": "./src",
-    "types": ["@figma/plugin-typings"]
+    "types": ["@figma/plugin-typings"],
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./src/*"],
+      "@/*": ["./src/*"],
+      "~~/*": ["./*"],
+      "@@/*": ["./*"],
+      "#shared/*": ["../../shared/*"],
+      "assets/*": ["./src/assets/*"],
+      "public/*": ["../../public/*"]
+    }
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"],

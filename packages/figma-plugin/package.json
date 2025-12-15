@@ -5,6 +5,9 @@
   "type": "module",
   "description": "Figma plugin for Xray",
   "main": "./dist/code.js",
+  "imports": {
+    "#shared/*": "../../shared/*"
+  },
   "scripts": {
     "build": "vite build",
     "clean": "rm -rf dist",

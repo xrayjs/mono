@@ -4,6 +4,9 @@
   "private": true,
   "type": "module",
   "description": "Visualiser application for Xray",
+  "imports": {
+    "#shared/*": "../../shared/*"
+  },
   "scripts": {
     "build": "vite build",
     "clean": "rm -rf dist",

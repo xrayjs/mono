@@ -12,6 +12,9 @@
       "types": "./dist/index.d.ts"
     }
   },
+  "imports": {
+    "#shared/*": "../../shared/*"
+  },
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf dist",
