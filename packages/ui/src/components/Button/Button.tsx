@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { mergeProps, splitProps } from "solid-js";
 import "./Button.css";
 
