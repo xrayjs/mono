@@ -4,7 +4,7 @@
 
 import { z } from "zod";
 import { writeFileSync } from "node:fs";
-import { TokenFileSchema } from "../";
+import { TokenFileSchema } from "../index";
 
 const jsonSchema = z.toJSONSchema(TokenFileSchema);
 
@@ -18,6 +18,6 @@ const schemaWithMeta = {
 
 const output = JSON.stringify(schemaWithMeta, null, 2);
 
-writeFileSync("dtcg.schema.json", output);
+writeFileSync("../../dtcg.schema.json", output);
 
 console.log("Generated dtcg.schema.json");

@@ -17,11 +17,16 @@
     "dev": "tsc --watch",
     "clean": "rm -rf dist",
     "typecheck": "tsc --noEmit",
-    "test": "vitest"
+    "test": "vitest",
+    "schema:generate": "tsx src/scripts/generate-schema.ts"
   },
   "devDependencies": {
     "@types/node": "catalog:",
+    "tsx": "^4.21.0",
     "typescript": "catalog:",
     "vitest": "catalog:"
+  },
+  "dependencies": {
+    "zod": "^4.2.0"
   }
 }
