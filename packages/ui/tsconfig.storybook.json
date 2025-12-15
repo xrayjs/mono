@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "composite": false,
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js"
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.css",
+    "src/**/*.stories.ts",
+    "src/**/*.stories.tsx",
+    ".storybook/**/*"
+  ],
+  "exclude": ["node_modules", "dist"]
+}
