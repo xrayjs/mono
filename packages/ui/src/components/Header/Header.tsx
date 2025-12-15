@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { mergeProps } from "solid-js";
 
 import { Button } from "../Button";

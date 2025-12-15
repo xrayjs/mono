@@ -245,15 +245,6 @@ export const ColorSwatch = (_props: ColorSwatchProps) => {
         </Show>
       </div>
       <div class="color-swatch__info">
-        <span class="color-swatch__value" title={props.color}>
-          {props.color}
-        </span>
-        <Show when={showSplitView()}>
-          <div class="color-swatch__fallback-info">
-            <span class="color-swatch__fallback-tag">fallback</span>
-            <span class="color-swatch__fallback-value">{fallbackString()}</span>
-          </div>
-        </Show>
         <span
           class="color-swatch__gamut"
           classList={{
@@ -266,6 +257,16 @@ export const ColorSwatch = (_props: ColorSwatchProps) => {
         >
           {gamut()}
         </span>
+        <span class="color-swatch__value" title={props.color}>
+          {props.color}
+        </span>
+
+        <Show when={showSplitView()}>
+          <div class="color-swatch__fallback-info">
+            <span class="color-swatch__fallback-tag">fallback</span>
+            <span class="color-swatch__fallback-value">{fallbackString()}</span>
+          </div>
+        </Show>
       </div>
     </div>
   );
