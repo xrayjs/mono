@@ -1,5 +1,5 @@
 {
-  "name": "@mono/visualiser",
+  "name": "@xray/visualiser",
   "version": "0.0.1",
   "private": true,
   "type": "module",
@@ -13,8 +13,8 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@mono/schema": "workspace:*",
-    "@mono/ui": "workspace:*",
+    "@xray/schema": "workspace:*",
+    "@xray/ui": "workspace:*",
     "solid-js": "catalog:"
   },
   "devDependencies": {

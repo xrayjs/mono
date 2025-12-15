@@ -1,9 +1,9 @@
 {
-  "name": "@xray/ui",
+  "name": "@xray/schema",
   "version": "0.0.1",
   "private": true,
   "type": "module",
-  "description": "Shared UI components for Xray",
+  "description": "Shared schemas and types for Xray",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
@@ -13,20 +13,17 @@
     }
   },
   "scripts": {
-    "build": "vite build",
-    "dev": "vite build --watch",
+    "build": "tsc",
+    "dev": "tsc --watch",
     "clean": "rm -rf dist",
     "typecheck": "tsc --noEmit",
     "test": "vitest"
   },
-  "dependencies": {
-    "@xray/schema": "workspace:*",
-    "solid-js": "catalog:"
-  },
   "devDependencies": {
     "typescript": "catalog:",
-    "vite": "catalog:",
-    "vitest": "catalog:",
-    "vite-plugin-solid": "^2.10.2"
+    "vitest": "catalog:"
+  },
+  "dependencies": {
+    "zod": "^4.2.0"
   }
 }

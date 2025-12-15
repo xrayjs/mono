@@ -1,5 +1,5 @@
 {
-  "name": "@mono/figma-plugin",
+  "name": "@xray/figma-plugin",
   "version": "0.0.1",
   "private": true,
   "type": "module",
@@ -13,7 +13,7 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@mono/schema": "workspace:*",
+    "@xray/schema": "workspace:*",
     "@figma/plugin-typings": "^1.104.0"
   },
   "devDependencies": {
