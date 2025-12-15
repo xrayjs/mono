@@ -149,13 +149,6 @@ export const ColorSwatch = (_props: ColorSwatchProps) => {
   });
 
   const unavailableMessage = createMemo(() => {
-    // When using alwaysShowFallback on a displayable color, show the gamut name instead
-    if (props.alwaysShowFallback && canDisplay()) {
-      const g = gamut();
-      if (g === "P3") return "P3";
-      if (g === "Rec2020") return "Rec2020";
-      if (g === "Wide") return "Wide";
-    }
     const g = gamut();
     if (g === "P3") return "P3 unavailable";
     if (g === "Rec2020") return "Rec2020 unavailable";
@@ -206,18 +199,20 @@ export const ColorSwatch = (_props: ColorSwatchProps) => {
             />
           }
         >
-          {/* Split view: left = original (with unavailable overlay), right = fallback */}
+          {/* Split view: left = original (with unavailable overlay if not displayable), right = fallback */}
           <div class="color-swatch__split-container">
             <div class="color-swatch__split-left">
               <div
                 class="color-swatch__color"
                 style={{ "background-color": cssColor() }}
               />
-              <div class="color-swatch__unavailable">
-                <span class="color-swatch__unavailable-text">
-                  {unavailableMessage()}
-                </span>
-              </div>
+              <Show when={!canDisplay()}>
+                <div class="color-swatch__unavailable">
+                  <span class="color-swatch__unavailable-text">
+                    {unavailableMessage()}
+                  </span>
+                </div>
+              </Show>
             </div>
             <div class="color-swatch__split-right">
               <div
