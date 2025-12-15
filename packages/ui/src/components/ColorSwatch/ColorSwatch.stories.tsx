@@ -11,6 +11,7 @@ const meta = preview.meta({
   argTypes: {
     color: { control: "text" },
     size: { control: { type: "range", min: 40, max: 200, step: 10 } },
+    alwaysShowFallback: { control: "boolean" },
   },
 });
 
@@ -214,6 +215,53 @@ export const WideGamut = meta.story({
     docs: {
       description: {
         story: "Extremely high chroma color that exceeds even Rec2020 gamut.",
+      },
+    },
+  },
+});
+
+// Always show fallback examples
+export const AlwaysShowFallbackP3 = meta.story({
+  args: {
+    color: "color(display-p3 1 0.2 0.1)",
+    alwaysShowFallback: true,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Forces split view even on P3-capable displays, showing the sRGB fallback.",
+      },
+    },
+  },
+});
+
+export const AlwaysShowFallbackOKLCH = meta.story({
+  args: {
+    color: "oklch(65% 0.3 29)",
+    alwaysShowFallback: true,
+    size: 120,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "High-chroma OKLCH with forced split view to compare original vs sRGB fallback.",
+      },
+    },
+  },
+});
+
+export const AlwaysShowFallbackSRGB = meta.story({
+  args: {
+    color: "#ff6b6b",
+    alwaysShowFallback: true,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "sRGB colors don't show split view even with alwaysShowFallback, since no fallback is needed.",
       },
     },
   },

@@ -16,6 +16,8 @@ export interface ColorSwatchProps {
   color: string;
   /** Swatch size in pixels (default: 80) */
   size?: number;
+  /** Always show split view with sRGB fallback for colors outside sRGB gamut */
+  alwaysShowFallback?: boolean;
   /** Allow native HTML attributes */
   [key: string]: unknown;
 }
@@ -76,10 +78,10 @@ function getFallbackColor(color: Color): string {
 
 /** Display a color swatch with value and gamut information */
 export const ColorSwatch = (_props: ColorSwatchProps) => {
-  const [props, rest] = splitProps(mergeProps({ size: 80 }, _props), [
-    "color",
-    "size",
-  ]);
+  const [props, rest] = splitProps(
+    mergeProps({ size: 80, alwaysShowFallback: false }, _props),
+    ["color", "size", "alwaysShowFallback"]
+  );
 
   const [displayGamut, setDisplayGamut] = createSignal<DisplayGamut>("srgb");
 
@@ -133,7 +135,25 @@ export const ColorSwatch = (_props: ColorSwatchProps) => {
     return canDisplayGamut(g, displayGamut());
   });
 
+  const isOutsideSrgb = createMemo(() => {
+    const g = gamut();
+    return g === "P3" || g === "Rec2020" || g === "Wide";
+  });
+
+  const showSplitView = createMemo(() => {
+    if (!isValid()) return false;
+    if (props.alwaysShowFallback && isOutsideSrgb()) return true;
+    return !canDisplay();
+  });
+
   const unavailableMessage = createMemo(() => {
+    // When using alwaysShowFallback on a displayable color, show the gamut name instead
+    if (props.alwaysShowFallback && canDisplay()) {
+      const g = gamut();
+      if (g === "P3") return "P3";
+      if (g === "Rec2020") return "Rec2020";
+      if (g === "Wide") return "Wide";
+    }
     const g = gamut();
     if (g === "P3") return "P3 unavailable";
     if (g === "Rec2020") return "Rec2020 unavailable";
@@ -160,7 +180,7 @@ export const ColorSwatch = (_props: ColorSwatchProps) => {
       <div
         class="color-swatch__swatch"
         classList={{
-          "color-swatch__swatch--split": !canDisplay() && isValid(),
+          "color-swatch__swatch--split": showSplitView(),
         }}
         style={{
           width: `${props.size}px`,
@@ -177,7 +197,7 @@ export const ColorSwatch = (_props: ColorSwatchProps) => {
         />
 
         <Show
-          when={!canDisplay() && isValid()}
+          when={showSplitView()}
           fallback={
             /* Normal single color view */
             <div
