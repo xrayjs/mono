@@ -16,8 +16,6 @@
     "build": "vite build",
     "clean": "rm -rf dist",
     "dev": "vite build --watch",
-    "test": "vitest",
-    "test:ui": "vitest --ui",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -25,10 +23,8 @@
     "solid-js": "catalog:"
   },
   "devDependencies": {
-    "@vitest/ui": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
-    "vite-plugin-solid": "^2.10.2",
-    "vitest": "catalog:"
+    "vite-plugin-solid": "^2.10.2"
   }
 }

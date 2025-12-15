@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Xray monorepo",
+  "description": "xray monorepo",
   "engines": {
     "node": ">=25.0.0",
     "pnpm": ">=10.0.0"

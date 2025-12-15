@@ -9,8 +9,6 @@
     "build": "vite build",
     "clean": "rm -rf dist",
     "dev": "vite build --watch",
-    "test": "vitest",
-    "test:ui": "vitest --ui",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -18,9 +16,7 @@
     "@figma/plugin-typings": "^1.104.0"
   },
   "devDependencies": {
-    "@vitest/ui": "catalog:",
     "typescript": "catalog:",
-    "vite": "catalog:",
-    "vitest": "catalog:"
+    "vite": "catalog:"
   }
 }
