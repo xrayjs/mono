@@ -2,19 +2,10 @@ packages:
   - packages/*
 
 catalog:
-  # Framework
-  solid-js: ^1.9.10
-
-  # Build tools
-  typescript: ^5.7.2
-  vite: ^6.0.5
-
-  # Testing
-  vitest: ^2.1.8
-
-  # Linting & Formatting
+  '@types/node': 25.0.2
   eslint: ^9.17.0
   prettier: ^3.4.2
-
-  # Type definitions
-  "@types/node": ^25.0.2
+  solid-js: ^1.9.10
+  typescript: ^5.7.2
+  vite: ^6.0.5
+  vitest: ^2.1.8

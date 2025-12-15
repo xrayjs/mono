@@ -7,26 +7,8 @@ settings:
 catalogs:
   default:
     '@types/node':
-      specifier: ^25.0.2
+      specifier: 25.0.2
       version: 25.0.2
-    eslint:
-      specifier: ^9.17.0
-      version: 9.39.2
-    prettier:
-      specifier: ^3.4.2
-      version: 3.7.4
-    solid-js:
-      specifier: ^1.9.10
-      version: 1.9.10
-    typescript:
-      specifier: ^5.7.2
-      version: 5.9.3
-    vite:
-      specifier: ^6.0.5
-      version: 6.4.1
-    vitest:
-      specifier: ^2.1.8
-      version: 2.1.9
 
 importers:
 
@@ -85,12 +67,9 @@ importers:
 
   packages/schema:
     devDependencies:
-      typescript:
+      '@types/node':
         specifier: 'catalog:'
-        version: 5.9.3
-      vitest:
-        specifier: 'catalog:'
-        version: 2.1.9(@types/node@25.0.2)
+        version: 25.0.2
 
   packages/ui:
     dependencies:

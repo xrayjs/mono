@@ -20,8 +20,10 @@
     "test": "vitest"
   },
   "devDependencies": {
-    "@types/node": "catalog:",
     "typescript": "catalog:",
     "vitest": "catalog:"
+  },
+  "dependencies": {
+    "zod": "^4.2.0"
   }
 }
