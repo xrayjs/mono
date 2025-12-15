@@ -19,7 +19,12 @@
       "#.storybook/*": ["./.storybook/*"]
     }
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", ".storybook", "stories"],
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/**/*.stories.tsx",
+    "src/**/*.stories.ts"
+  ],
   "references": [{ "path": "../schema" }]
 }

@@ -1,7 +1,7 @@
 import { mergeProps } from "solid-js";
 
-import { Button } from "./Button";
-import "./header.css";
+import { Button } from "../Button";
+import "./Header.css";
 
 export interface HeaderProps {
   user?: { name: string } | undefined;
