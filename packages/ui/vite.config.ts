@@ -17,8 +17,8 @@ export default defineConfig({
     alias: {
       "~": path.resolve(dirname, "./src"),
       "@": path.resolve(dirname, "./src"),
-      "~~": path.resolve(dirname, "."),
-      "@@": path.resolve(dirname, "."),
+      "~~": path.resolve(dirname, "../.."),
+      "@@": path.resolve(dirname, "../.."),
       "#shared": path.resolve(dirname, "../../shared"),
       assets: path.resolve(dirname, "./src/assets"),
       public: path.resolve(dirname, "../../public"),
