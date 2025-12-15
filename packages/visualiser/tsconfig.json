@@ -21,7 +21,7 @@
       "~~/*": ["./*"],
       "@@/*": ["./*"],
       "#shared/*": ["../../shared/*"],
-      "assets/*": ["../../assets/*"],
+      "assets/*": ["./src/assets/*"],
       "public/*": ["./public/*"]
     }
   },

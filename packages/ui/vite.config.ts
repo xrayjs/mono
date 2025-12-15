@@ -20,7 +20,7 @@ export default defineConfig({
       "~~": path.resolve(dirname, "."),
       "@@": path.resolve(dirname, "."),
       "#shared": path.resolve(dirname, "../../shared"),
-      assets: path.resolve(dirname, "../../assets"),
+      assets: path.resolve(dirname, "./src/assets"),
       public: path.resolve(dirname, "../../public"),
     },
   },
