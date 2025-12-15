@@ -14,11 +14,11 @@
   },
   "scripts": {
     "build": "tsc",
-    "dev": "tsc --watch",
     "clean": "rm -rf dist",
-    "typecheck": "tsc --noEmit",
+    "dev": "tsc --watch",
     "test": "vitest",
-    "test:ui": "vitest --ui"
+    "test:ui": "vitest --ui",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/node": "catalog:",
@@ -28,6 +28,6 @@
   },
   "dependencies": {
     "@xray/schema": "workspace:*",
-    "zod": "catalog:"
+    "zod": "^4.2.0"
   }
 }

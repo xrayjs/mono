@@ -6,12 +6,13 @@
   "description": "Visualiser application for Xray",
   "scripts": {
     "build": "vite build",
-    "start": "vite",
+    "clean": "rm -rf dist",
     "dev": "vite",
     "preview": "vite preview",
-    "clean": "rm -rf dist",
-    "typecheck": "tsc --noEmit",
-    "test": "vitest"
+    "start": "vite",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@kobalte/core": "^0.13.7",
@@ -21,12 +22,13 @@
     "solid-js": "catalog:"
   },
   "devDependencies": {
+    "@unocss/preset-wind4": "^66.5.10",
+    "@unocss/vite": "^66.5.0",
+    "@vitest/ui": "catalog:",
+    "solid-devtools": "^0.34.3",
     "typescript": "catalog:",
     "vite": "catalog:",
-    "vitest": "catalog:",
-    "@unocss/vite": "^66.5.0",
-    "@unocss/preset-wind4": "^66.5.10",
-    "solid-devtools": "^0.34.3",
-    "vite-plugin-solid": "^2.11.8"
+    "vite-plugin-solid": "^2.11.8",
+    "vitest": "catalog:"
   }
 }

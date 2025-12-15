@@ -7,16 +7,18 @@
   "main": "./dist/code.js",
   "scripts": {
     "build": "vite build",
-    "dev": "vite build --watch",
     "clean": "rm -rf dist",
-    "typecheck": "tsc --noEmit",
-    "test": "vitest"
+    "dev": "vite build --watch",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@xray/schema": "workspace:*",
     "@figma/plugin-typings": "^1.104.0"
   },
   "devDependencies": {
+    "@vitest/ui": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
     "vitest": "catalog:"

@@ -14,19 +14,21 @@
   },
   "scripts": {
     "build": "vite build",
-    "dev": "vite build --watch",
     "clean": "rm -rf dist",
-    "typecheck": "tsc --noEmit",
-    "test": "vitest"
+    "dev": "vite build --watch",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@xray/schema": "workspace:*",
     "solid-js": "catalog:"
   },
   "devDependencies": {
+    "@vitest/ui": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
-    "vitest": "catalog:",
-    "vite-plugin-solid": "^2.10.2"
+    "vite-plugin-solid": "^2.10.2",
+    "vitest": "catalog:"
   }
 }
