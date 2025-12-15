@@ -18,18 +18,16 @@
     "clean": "rm -rf dist",
     "typecheck": "tsc --noEmit",
     "test": "vitest",
-    "test:run": "vitest run",
-    "test:watch": "vitest watch",
-    "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui"
   },
   "devDependencies": {
     "@types/node": "catalog:",
+    "@vitest/ui": "catalog:",
     "typescript": "catalog:",
     "vitest": "catalog:"
   },
   "dependencies": {
     "@xray/schema": "workspace:*",
-    "zod": "^4.2.0"
+    "zod": "catalog:"
   }
 }
