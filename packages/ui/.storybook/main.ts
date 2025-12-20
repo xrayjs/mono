@@ -20,7 +20,7 @@ export default defineMain({
     "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)",
   ],
   viteFinal: (config) => {
-    config.base = "/mono/storybook/";
+    config.base = "/mono/ui/";
     return config;
   },
 });

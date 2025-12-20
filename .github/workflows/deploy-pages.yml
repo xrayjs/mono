@@ -46,9 +46,9 @@ jobs:
 
       - name: Prepare combined output
         run: |
-          mkdir -p _site/docs _site/storybook
+          mkdir -p _site/docs _site/ui
           cp -r packages/docs/dist/* _site/docs/
-          cp -r packages/ui/storybook-static/* _site/storybook/
+          cp -r packages/ui/storybook-static/* _site/ui/
           cp .github/pages-index.html _site/index.html
 
       - name: Setup Pages
