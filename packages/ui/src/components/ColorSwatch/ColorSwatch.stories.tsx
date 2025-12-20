@@ -24,6 +24,7 @@ export const Default = meta.story({
 
 // sRGB gamut colors (will always display normally)
 export const SRGBColor = meta.story({
+  name: "sRGB Color",
   args: {
     color: "rgb(100, 149, 237)",
   },
@@ -43,6 +44,7 @@ export const HSLColor = meta.story({
 
 // P3 gamut colors (will show split view on sRGB displays)
 export const P3Color = meta.story({
+  name: "P3 Color",
   args: {
     color: "color(display-p3 1 0.2 0.1)",
   },
@@ -57,6 +59,7 @@ export const P3Color = meta.story({
 });
 
 export const P3VibrantGreen = meta.story({
+  name: "P3 Vibrant Green",
   args: {
     color: "color(display-p3 0.2 1 0.2)",
   },
@@ -70,6 +73,7 @@ export const P3VibrantGreen = meta.story({
 });
 
 export const P3VibrantCyan = meta.story({
+  name: "P3 Vibrant Cyan",
   args: {
     color: "color(display-p3 0 0.9 0.9)",
   },
@@ -77,6 +81,7 @@ export const P3VibrantCyan = meta.story({
 
 // Rec2020 gamut colors (will show split view on sRGB and P3 displays)
 export const Rec2020Color = meta.story({
+  name: "Rec2020 Color",
   args: {
     color: "color(rec2020 0.9 0.1 0.1)",
   },
@@ -91,6 +96,7 @@ export const Rec2020Color = meta.story({
 });
 
 export const Rec2020Green = meta.story({
+  name: "Rec2020 Green",
   args: {
     color: "color(rec2020 0.3 0.9 0.1)",
   },
@@ -136,6 +142,7 @@ export const HexWithAlpha = meta.story({
 });
 
 export const P3WithAlpha = meta.story({
+  name: "P3 With Alpha",
   args: {
     color: "color(display-p3 1 0.3 0.1 / 0.7)",
   },
@@ -165,6 +172,7 @@ export const LargeSize = meta.story({
 });
 
 export const LargeP3Color = meta.story({
+  name: "Large P3 Color",
   args: {
     color: "color(display-p3 1 0.5 0)",
     size: 140,
@@ -222,6 +230,7 @@ export const WideGamut = meta.story({
 
 // Always show fallback examples
 export const AlwaysShowFallbackP3 = meta.story({
+  name: "Always Show Fallback P3",
   args: {
     color: "color(display-p3 1 0.2 0.1)",
     alwaysShowFallback: true,
@@ -253,6 +262,7 @@ export const AlwaysShowFallbackOKLCH = meta.story({
 });
 
 export const AlwaysShowFallbackSRGB = meta.story({
+  name: "Always Show Fallback sRGB",
   args: {
     color: "#ff6b6b",
     alwaysShowFallback: true,

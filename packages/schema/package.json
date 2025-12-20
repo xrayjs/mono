@@ -19,7 +19,7 @@
     "build": "tsc",
     "clean": "rm -rf dist",
     "dev": "tsc --watch",
-    "schema:generate": "tsx src/scripts/generate-schema.ts",
+    "schema:generate": "bun src/scripts/generate-schema.ts",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "typecheck": "tsc --noEmit"
@@ -27,7 +27,6 @@
   "devDependencies": {
     "@types/node": "catalog:",
     "@vitest/ui": "catalog:",
-    "tsx": "^4.21.0",
     "typescript": "catalog:",
     "vitest": "catalog:"
   },
