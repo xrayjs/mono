@@ -1,9 +1,10 @@
-name: Publish Storybook to GitHub Pages
+name: Deploy Docs & Storybook to GitHub Pages
 
 on:
   push:
     branches:
-      - publish
+      - main
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -37,8 +38,18 @@ jobs:
       - name: Install dependencies
         run: bun install
 
+      - name: Build Docs
+        run: bun run --filter docs build
+
       - name: Build Storybook
         run: bun run --filter @xray/ui storybook:build
+
+      - name: Prepare combined output
+        run: |
+          mkdir -p _site/docs _site/storybook
+          cp -r packages/docs/dist/* _site/docs/
+          cp -r packages/ui/storybook-static/* _site/storybook/
+          cp .github/pages-index.html _site/index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -46,7 +57,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: packages/ui/storybook-static
+          path: _site
 
   deploy:
     environment:

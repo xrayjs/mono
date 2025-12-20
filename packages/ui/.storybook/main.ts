@@ -19,4 +19,8 @@ export default defineMain({
     "../src/stories/**/*.mdx",
     "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)",
   ],
+  viteFinal: (config) => {
+    config.base = "/mono/storybook/";
+    return config;
+  },
 });
