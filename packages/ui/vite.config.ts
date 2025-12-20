@@ -4,6 +4,7 @@ import { fileURLToPath } from "url";
 import { defineConfig } from "vite";
 import { storybookTest } from "@storybook/addon-vitest/vitest-plugin";
 import { playwright } from "@vitest/browser-playwright";
+import solid from "vite-plugin-solid";
 
 const dirname =
   typeof __dirname !== "undefined"
@@ -12,7 +13,17 @@ const dirname =
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [],
+  plugins: [solid()],
+  build: {
+    lib: {
+      entry: path.resolve(dirname, "src/index.ts"),
+      formats: ["es"],
+      fileName: "index",
+    },
+    rollupOptions: {
+      external: ["solid-js", "solid-js/web", "solid-js/store", "colorjs.io"],
+    },
+  },
   resolve: {
     alias: {
       "~": path.resolve(dirname, "./src"),
