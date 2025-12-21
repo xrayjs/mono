@@ -6,6 +6,11 @@ import starlight from "@astrojs/starlight";
 export default defineConfig({
   site: "https://xrayjs.github.io",
   base: "/mono/docs",
+  vite: {
+    ssr: {
+      noExternal: ["zod"],
+    },
+  },
   integrations: [
     starlight({
       title: "My Docs",
