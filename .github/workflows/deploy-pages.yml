@@ -38,6 +38,9 @@ jobs:
       - name: Install dependencies
         run: bun install
 
+      - name: Build UI package
+        run: bun run --filter @xray/ui build
+
       - name: Build Docs
         run: bun run --filter docs build
 
