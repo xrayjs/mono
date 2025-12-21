@@ -1,4 +1,4 @@
-name: Deploy Docs & Storybook to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -44,11 +44,15 @@ jobs:
       - name: Build Storybook
         run: bun run --filter @xray/ui storybook:build
 
+      - name: Build Visualiser
+        run: VITE_BASE_PATH=/mono/visualiser/ bun run --filter @xray/visualiser build
+
       - name: Prepare combined output
         run: |
-          mkdir -p _site/docs _site/ui
+          mkdir -p _site/docs _site/ui _site/visualiser
           cp -r packages/docs/dist/* _site/docs/
           cp -r packages/ui/storybook-static/* _site/ui/
+          cp -r packages/visualiser/dist/* _site/visualiser/
           cp .github/pages-index.html _site/index.html
 
       - name: Setup Pages
